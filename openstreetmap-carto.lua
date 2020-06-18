@@ -205,10 +205,10 @@ local roads_info = {
         tertiary_link   = {z = 200, roads = false},
         service         = {z = 150, roads = false},
         track           = {z = 110, roads = false},
-        path            = {z = 100, roads = false},
-        footway         = {z = 100, roads = false},
+        path            = {z = 370, roads = false},
+        footway         = {z = 370, roads = false},
         bridleway       = {z = 100, roads = false},
-        cycleway        = {z = 100, roads = false},
+        cycleway        = {z = 370, roads = false},
         steps           = {z = 90,  roads = false},
         platform        = {z = 90,  roads = false}
     },
