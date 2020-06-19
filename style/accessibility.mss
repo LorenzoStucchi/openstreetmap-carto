@@ -65,12 +65,8 @@
 	    marker-fill: @transportation-icon;
 	    marker-width: @parking-icon-size;
 
-	    [zoom >= 19]{
-			marker-width: 1.5*@obstacle-size;
-		}
-
-		[zoom >= 21]{
-			marker-width: 2*@obstacle-size;
+		[zoom >= 20]{
+			marker-width: 1.2*@obstacle-size;
 		}
 	}
 }
@@ -81,13 +77,9 @@
 		marker-file: url('symbols/barrier/wheelchair_parking.svg');
 	    marker-fill: @transportation-icon;
 	    marker-width: @parking-icon-size;
-	    
-	   	[zoom >= 19]{
-			marker-width: 1.5*@obstacle-size;
-		}
 
-		[zoom >= 21]{
-			marker-width: 2*@obstacle-size;
+		[zoom >= 20]{
+			marker-width: 1.2*@obstacle-size;
 		}
 	}
 }
