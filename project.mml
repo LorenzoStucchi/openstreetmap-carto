@@ -2284,6 +2284,38 @@ Layer:
         ) AS obstacle_wheelchair
     properties:
       minzoom: 17
+  - id: parking_wheelchair_point
+    geometry: point
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way,
+            amenity,
+            tags->'disabled' AS disabled,
+            tags->'parking_space' AS parking_space
+          FROM planet_osm_point
+          WHERE amenity = 'parking_space'
+        ) AS parking_wheelchair_point
+    properties:
+      minzoom: 17
+  - id: parking_wheelchair_poly
+    geometry: point
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way,
+            amenity,
+            tags->'disabled' AS disabled,
+            tags->'parking_space' AS parking_space
+          FROM planet_osm_polygon
+          WHERE amenity = 'parking_space'
+        ) AS parking_wheelchair_poly
+    properties:
+      minzoom: 17
   - id: text-low-priority
     geometry: point
     <<: *extents
