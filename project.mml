@@ -8,9 +8,9 @@ bounds: &world
   - 180
   - 85.05112877980659
 center:
-  - 11.87549
-  - 45.40904
-  - 17
+  - 11.8677
+  - 45.3745
+  - 15
 format: png
 interactivity: false
 minzoom: 15
@@ -2259,13 +2259,31 @@ Layer:
       table: |-
         (SELECT
             way,
-            tags->'kerb' AS kerb
+            tags->'kerb' AS kerb,
+            tags->'kerb:height' AS kerb_height,
+            tags->'tactile_paving' AS tactile_paving
           FROM planet_osm_point
-          WHERE (tags->'kerb') IS NOT NULL
+          WHERE (tags->'kerb') IS NOT NULL AND highway IS NULL
         ) AS kerbs
     properties:
-      cache-features: true
-      minzoom: 16
+      minzoom: 17
+  - id: obstacle_wheelchair
+    geometry: point
+    <<: *extents
+    Datasource:
+      <<: *osm2pgsql
+      table: |-
+        (SELECT
+            way,
+            amenity,
+            barrier,
+            "natural" AS natural,
+            tags->'obstacle:wheelchair' AS wheelchair_obstacle
+          FROM planet_osm_point
+          WHERE (tags->'obstacle:wheelchair') IS NOT NULL
+        ) AS obstacle_wheelchair
+    properties:
+      minzoom: 17
   - id: text-low-priority
     geometry: point
     <<: *extents
