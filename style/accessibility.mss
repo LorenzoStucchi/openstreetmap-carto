@@ -1,6 +1,7 @@
 @kerb-size:	     	10;
 @obstacle-size:	 	15;
 @parking-icon-size: 10;
+@access_shop-size: 	40;
 
 #kerbs [zoom >= 17]{
 	marker-file: url('symbols/barrier/kerb_round.svg');
@@ -40,6 +41,7 @@
 	marker-fill: darkorange;
 	marker-width: @obstacle-size;
 	marker-clip: false;
+	marker-allow-overlap: true;
 
 	[amenity = "waste_basket"],
 	[barrier = "bollard"],
@@ -58,7 +60,7 @@
 	}
 }
 
-#parking_wheelchair_point[zoom >= 17]{
+#parking_wheelchair[zoom >= 17]{
 	[disabled = 'designated'],
 	[parking_space = 'disabled']{
 		marker-file: url('symbols/barrier/wheelchair_parking.svg');
@@ -66,20 +68,27 @@
 	    marker-width: @parking-icon-size;
 
 		[zoom >= 20]{
-			marker-width: 1.2*@obstacle-size;
+			marker-width: 1.2*@parking-icon-size;
 		}
 	}
 }
 
-#parking_wheelchair_poly[zoom >= 17]{
-	[disabled = 'designated'],
-	[parking_space = 'disabled']{
-		marker-file: url('symbols/barrier/wheelchair_parking.svg');
-	    marker-fill: @transportation-icon;
-	    marker-width: @parking-icon-size;
 
-		[zoom >= 20]{
-			marker-width: 1.2*@obstacle-size;
-		}
+#accessible_shop[zoom >= 19]{
+	marker-file: url('symbols/amenity/wheelchair_icon.svg');
+	marker-clip: false;
+	marker-width: @access_shop-size;
+	marker-allow-overlap: true;
+
+	[wheelchair = 'yes']{
+		marker-fill: green;
+	}
+
+	[wheelchair = 'limited']{
+		marker-fill: darkorange;
+	}
+
+	[wheelchair = 'no']{
+		marker-fill: red;
 	}
 }

@@ -2284,36 +2284,52 @@ Layer:
         ) AS obstacle_wheelchair
     properties:
       minzoom: 17
-  - id: parking_wheelchair_point
-    geometry: point
+  - id: parking_wheelchair
+    geometry: polygon
     <<: *extents
     Datasource:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way,
-            amenity,
-            tags->'disabled' AS disabled,
-            tags->'parking_space' AS parking_space
-          FROM planet_osm_point
-          WHERE amenity = 'parking_space'
-        ) AS parking_wheelchair_point
+          way,
+          amenity,
+          tags->'disabled' AS disabled,
+          tags->'parking_space' AS parking_space
+        FROM planet_osm_point
+        WHERE amenity = 'parking_space'
+        UNION ALL
+        SELECT
+          way,
+          amenity,
+          tags->'disabled' AS disabled,
+          tags->'parking_space' AS parking_space
+        FROM planet_osm_polygon
+        WHERE amenity = 'parking_space'
+        ) AS parking_wheelchair
     properties:
       minzoom: 17
-  - id: parking_wheelchair_poly
+  - id: accessible_shop
     geometry: point
     <<: *extents
     Datasource:
       <<: *osm2pgsql
       table: |-
         (SELECT
-            way,
-            amenity,
-            tags->'disabled' AS disabled,
-            tags->'parking_space' AS parking_space
-          FROM planet_osm_polygon
-          WHERE amenity = 'parking_space'
-        ) AS parking_wheelchair_poly
+          way,
+          amenity,
+          shop,
+          tags->'wheelchair' AS wheelchair
+        FROM planet_osm_point
+        WHERE tags->'wheelchair' IS NOT NULL AND (amenity IS NOT NULL OR shop IS NOT NULL)
+        UNION ALL
+        SELECT
+          way,
+          amenity,
+          shop,
+          tags->'wheelchair' AS wheelchair
+        FROM planet_osm_polygon
+        WHERE tags->'wheelchair' IS NOT NULL AND (amenity IS NOT NULL OR shop IS NOT NULL)        
+        ) AS accessible_shop
     properties:
       minzoom: 17
   - id: text-low-priority
