@@ -73,7 +73,6 @@
 	}
 }
 
-
 #accessible_shop[zoom >= 19]{
 	marker-file: url('symbols/amenity/wheelchair_icon.svg');
 	marker-clip: false;
