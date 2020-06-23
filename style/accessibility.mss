@@ -4,9 +4,28 @@
 @access_shop-size: 	40;
 
 #kerbs [zoom >= 17]{
+
+	::back{
+		back/marker-width: @kerb-size;
+		back/marker-type: ellipse;
+		back/marker-fill: white;
+		back/marker-line-width: 0;
+		back/marker-allow-overlap: true;
+		back/marker-opacity: 0.8;
+
+		[zoom >= 19]{
+			back/marker-width: 1.5*@kerb-size;
+		}
+
+		[zoom >= 21]{
+			back/marker-width: 2*@kerb-size;
+		}
+	}
+
 	marker-file: url('symbols/barrier/kerb_round.svg');
 	marker-width: @kerb-size;
 	marker-clip: false;
+	marker-allow-overlap: true;
 	
 	[kerb = 'flush']{
 		marker-fill: green;
@@ -36,7 +55,7 @@
 	}
 }
 
-#obstacle_wheelchair [zoom >= 17]{
+#obstacle_wheelchair [zoom >= 18]{
 	marker-file: url('symbols/barrier/danger_wheelchair.svg');
 	marker-fill: darkorange;
 	marker-width: @obstacle-size;
