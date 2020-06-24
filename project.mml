@@ -2280,7 +2280,7 @@ Layer:
             "natural" AS natural,
             tags->'obstacle:wheelchair' AS wheelchair_obstacle
           FROM planet_osm_point
-          WHERE (tags->'obstacle:wheelchair') IS NOT NULL
+          WHERE tags->'obstacle:wheelchair'='yes'
         ) AS obstacle_wheelchair
     properties:
       minzoom: 17

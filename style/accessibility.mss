@@ -1,7 +1,8 @@
-@kerb-size:	     	10;
-@obstacle-size:	 	15;
-@parking-icon-size: 10;
-@access_shop-size: 	40;
+@kerb-size:	     		10;
+@obstacle-size:	 		15;
+@back-obstacle-size:	10;
+@parking-icon-size: 	10;
+@access_shop-size: 		40;
 
 #kerbs [zoom >= 17]{
 
@@ -9,7 +10,8 @@
 		back/marker-width: @kerb-size;
 		back/marker-type: ellipse;
 		back/marker-fill: white;
-		back/marker-line-width: 0;
+/*		back/marker-line-width: 1;*/
+/*		back/marker-line-color: black;*/
 		back/marker-allow-overlap: true;
 		back/marker-opacity: 0.8;
 
@@ -22,7 +24,7 @@
 		}
 	}
 
-	marker-file: url('symbols/barrier/kerb_round.svg');
+	marker-file: url('symbols/accessibility/kerb_round.svg');
 	marker-width: @kerb-size;
 	marker-clip: false;
 	marker-allow-overlap: true;
@@ -56,7 +58,24 @@
 }
 
 #obstacle_wheelchair [zoom >= 18]{
-	marker-file: url('symbols/barrier/danger_wheelchair.svg');
+	::back{
+		back/marker-width: @back-obstacle-size;
+		back/marker-type: ellipse;
+		back/marker-fill: white;
+		back/marker-line-width: 0;
+		back/marker-allow-overlap: true;
+		back/marker-opacity: 0.6;
+
+		[zoom >= 19]{
+			back/marker-width: 1.5*@back-obstacle-size;
+		}
+
+		[zoom >= 21]{
+			back/marker-width: 2*@back-obstacle-size;
+		}
+	}
+
+	marker-file: url('symbols/accessibility/danger_wheelchair.svg');
 	marker-fill: darkorange;
 	marker-width: @obstacle-size;
 	marker-clip: false;
@@ -66,8 +85,15 @@
 	[barrier = "bollard"],
 	[barrier = "block"],
 	[natural = "tree"]{
-		marker-opacity: 0.8;
+		marker-opacity: 0.7;
 		marker-fill: orange;
+	}
+
+	[amenity = "waste_basket"],
+	[barrier = "bollard"],
+	[barrier = "block"],
+	[natural = "tree"]::back{
+		back/marker-opacity: 0;
 	}
 
 	[zoom >= 19]{
@@ -82,7 +108,7 @@
 #parking_wheelchair[zoom >= 17]{
 	[disabled = 'designated'],
 	[parking_space = 'disabled']{
-		marker-file: url('symbols/barrier/wheelchair_parking.svg');
+		marker-file: url('symbols/accessibility/wheelchair_parking.svg');
 	    marker-fill: @transportation-icon;
 	    marker-width: @parking-icon-size;
 
@@ -93,7 +119,7 @@
 }
 
 #accessible_shop[zoom >= 19]{
-	marker-file: url('symbols/amenity/wheelchair_icon.svg');
+	marker-file: url('symbols/accessibility/wheelchair_icon.svg');
 	marker-clip: false;
 	marker-width: @access_shop-size;
 	marker-allow-overlap: true;
