@@ -1537,12 +1537,16 @@
   [feature = 'barrier_log'],
   [feature = 'barrier_turnstile'] {
     [zoom >= 17] {
-      marker-width: 10;
+      marker-width: 5;
       marker-line-width: 0;
       marker-fill: #7d7c7c;
 
       [zoom >= 19] {
-        marker-width: 15;
+        marker-width: 6;
+      }
+
+      [zoom >= 21] {
+        marker-width: 10;
       }
     }
   }

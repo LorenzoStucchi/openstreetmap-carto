@@ -10,8 +10,6 @@
 		back/marker-width: @kerb-size;
 		back/marker-type: ellipse;
 		back/marker-fill: white;
-/*		back/marker-line-width: 1;*/
-/*		back/marker-line-color: black;*/
 		back/marker-allow-overlap: true;
 		back/marker-opacity: 0.8;
 
@@ -109,7 +107,7 @@
 	[disabled = 'designated'],
 	[parking_space = 'disabled']{
 		marker-file: url('symbols/accessibility/wheelchair_parking.svg');
-	    marker-fill: @transportation-icon;
+	    marker-fill: blue;
 	    marker-width: @parking-icon-size;
 
 		[zoom >= 20]{

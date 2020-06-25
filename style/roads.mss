@@ -325,6 +325,7 @@
 @railway-text-repeat-distance: 200;
 
 // accessibility focus
+@steps-width-z18:                 4;
 @footway-width-z20:               4;
 @footway-width-z21:               4.5;
 @footway-width-z22:               5;
@@ -652,6 +653,7 @@
         [zoom >= 15] {
           line-width: @steps-width-z14 + 2 * (@paths-background-width + @paths-bridge-casing-width);
           [zoom >= 15] { line-width: @steps-width-z15 + 2 * (@paths-background-width + @paths-bridge-casing-width); }
+          [zoom >= 18] { line-width: @steps-width-z18 + 2 * (@paths-background-width + @paths-bridge-casing-width); }
           line-color: @bridge-casing;
           line-join: round;
         }
@@ -661,6 +663,7 @@
         [zoom >= 15] {
           line-width: @steps-width-z14 + 2 * (@paths-background-width + @paths-tunnel-casing-width);
           [zoom >= 15] { line-width: @steps-width-z15 + 2 * (@paths-background-width + @paths-tunnel-casing-width); }
+          [zoom >= 18] { line-width: @steps-width-z18 + 2 * (@paths-background-width + @paths-tunnel-casing-width); }
           line-color: @tunnel-casing;
           line-dasharray: 4,2;
         }
@@ -990,6 +993,7 @@
         [zoom >= 15] {
           line-width: @steps-width-z14 + 2 * @paths-background-width;
           [zoom >= 15] { line-width: @steps-width-z15 + 2 * @paths-background-width; }
+          [zoom >= 18] { line-width: @steps-width-z18 + 2 * @paths-background-width; }
           line-color: @steps-casing;
           line-join: round;
         }
@@ -1002,6 +1006,7 @@
           line-join: round;
           line-width: @steps-width-z14 + 2 * @paths-background-width;
           [zoom >= 15] { line-width: @steps-width-z15 + 2 * @paths-background-width; }
+          [zoom >= 18] { line-width: @steps-width-z18 + 2 * @paths-background-width; }
         }
       }
     }
@@ -1862,9 +1867,10 @@ tertiary is rendered from z10 and is not included in osm_planet_roads. */
         }
         line/line-color: @steps-fill;
         [access = 'no'] { line/line-color: @steps-fill-noaccess; }
-        line/line-dasharray: 2,1;
+        line/line-dasharray: 2,2;
         line/line-width: @steps-width-z14;
         [zoom >= 15] { line/line-width:  @steps-width-z15; }
+        [zoom >= 18] { line/line-width:  @steps-width-z18; }
       }
     }
 
